@@ -1,0 +1,12 @@
+[package]
+name = "dataset-dr"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+description = "RDF dataset: quads and graph names as borrowed/owned pairs with dataset traits and an in-memory implementation"
+license.workspace = true
+
+[dependencies]
+graph-dr.workspace = true
+macro-enum-dr.workspace = true
+term-dr.workspace = true
