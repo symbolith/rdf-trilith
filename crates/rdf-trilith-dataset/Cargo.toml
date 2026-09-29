@@ -1,0 +1,12 @@
+[package]
+name = "rdf-trilith-dataset"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+description = "RDF dataset: quads and graph names as borrowed/owned pairs with dataset traits and an in-memory implementation"
+license.workspace = true
+
+[dependencies]
+rdf-trilith-graph.workspace = true
+rdf-trilith-macro-enum.workspace = true
+rdf-trilith-term.workspace = true
