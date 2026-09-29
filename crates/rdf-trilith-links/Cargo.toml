@@ -1,0 +1,12 @@
+[package]
+name = "rdf-trilith-links"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+description = "Link type system converting markdown links, wiki links, and autolinks into each other"
+license.workspace = true
+
+[dependencies]
+rdf-trilith-iri.workspace = true
+rdf-trilith-macro-validated.workspace = true
+snafu.workspace = true

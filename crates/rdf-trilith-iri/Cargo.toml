@@ -1,0 +1,22 @@
+[package]
+name = "rdf-trilith-iri"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+description = "IRI type system with borrowed/owned pairs and position-based component access"
+license.workspace = true
+
+[features]
+oxiri = ["dep:oxiri"]
+oxrdf = ["dep:oxrdf"]
+whatwg = ["dep:url"]
+
+[dependencies]
+rdf-trilith-macro-validated.workspace = true
+oxiri = { workspace = true, optional = true }
+oxrdf = { workspace = true, optional = true }
+url = { workspace = true, optional = true }
+snafu.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true

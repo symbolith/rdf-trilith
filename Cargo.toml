@@ -8,12 +8,12 @@ rust-version = "1.97.0"
 license = "MIT OR Apache-2.0"
 
 [workspace.dependencies]
-dataset-dr = { path = "crates/dataset-dr" }
-graph-dr = { path = "crates/graph-dr" }
-iri-dr = { path = "crates/iri-dr" }
-macro-enum-dr = { path = "crates/macro-enum-dr" }
-macro-validated-dr = { path = "crates/macro-validated-dr" }
-term-dr = { path = "crates/term-dr" }
+rdf-trilith-dataset = { path = "crates/rdf-trilith-dataset" }
+rdf-trilith-graph = { path = "crates/rdf-trilith-graph" }
+rdf-trilith-iri = { path = "crates/rdf-trilith-iri" }
+rdf-trilith-macro-enum = { path = "crates/rdf-trilith-macro-enum" }
+rdf-trilith-macro-validated = { path = "crates/rdf-trilith-macro-validated" }
+rdf-trilith-term = { path = "crates/rdf-trilith-term" }
 oxiri = "0.3"
 oxrdf = { version = "0.3", features = ["rdf-12"] }
 paste = "1.0"
