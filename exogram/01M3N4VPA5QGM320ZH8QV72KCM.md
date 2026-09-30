@@ -9,6 +9,34 @@ type:
   - "[Type Node](20260923150300.md)"
 state: intended
 generated:
-  - "[Software rdf-trilith](20260830114137.md)"
+  - "[Software RDF Trilith](20260830114137.md)"
 reviewLevel: unread
 ---
+
+## Requires
+
+<!-- dataview-serializer-js:
+const act = dv.current();
+const refers = (value, id) => String(value).includes(id + ".md");
+dv.list(dv.pages()
+  .where(page => page.file.name !== act.file.name
+    && (refers(act.requires, page.file.name) || refers(page.precedes, act.file.name)))
+  .sort(page => page.file.aliases[0])
+  .map(page => "[" + page.file.aliases[0] + "](" + page.file.name + ".md): " + (page.state ?? "")));
+ -->
+
+## Precedes
+
+<!-- dataview-serializer-js:
+const act = dv.current();
+const refers = (value, id) => String(value).includes(id + ".md");
+dv.list(dv.pages()
+  .where(page => page.file.name !== act.file.name
+    && (refers(page.requires, act.file.name) || refers(act.precedes, page.file.name)))
+  .sort(page => page.file.aliases[0])
+  .map(page => "[" + page.file.aliases[0] + "](" + page.file.name + ".md): " + (page.state ?? "")));
+ -->
+<!-- dataview-serializer-js-result -->
+- [Project Implement Exogram](01M3A95S1554VBS85KMME6TEWZ.md): claimed
+
+<!-- dataview-serializer-js-result-end -->
