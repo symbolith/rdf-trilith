@@ -3,12 +3,9 @@ aliases:
   - Project Implement rdf-trilith
 type:
   - "[Type Project](20251204171142.md)"
-  - "[Type Act](20260608023505.md)"
-  - "[Type Transition](20260608023504.md)"
-  - "[Type Activity](20260426153348.md)"
-  - "[Type Node](20260923150300.md)"
+  - "[Type Actable](01M3VXV8F3WKG2T8JN5NYGRYV5.md)"
 state: intended
-generated:
+hasOutput:
   - "[Software RDF Trilith](20260830114137.md)"
 reviewLevel: unread
 ---
