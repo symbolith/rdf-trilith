@@ -1,13 +1,12 @@
 ---
 aliases:
-  - Exogram rdf-trilith
+  - Exogram RDF Trilith
 type:
   - "[Type Exogram](20260923113859.md)"
   - "[Type Entity](20260923123011.md)"
 subject:
-  - "[Project Implement rdf-trilith](01M3N4VPA5QGM320ZH8QV72KCM.md)"
+  - "[Project Implement RDF Trilith](01M3N4VPA5QGM320ZH8QV72KCM.md)"
   - "[Software RDF Trilith](20260830114137.md)"
-comment: Rust crates for the RDF domain, IRIs, terms, triples, graphs, and datasets.
 wasAttributedTo:
   - "[Symbolith](20260816134144.md)"
 reviewLevel: unread
