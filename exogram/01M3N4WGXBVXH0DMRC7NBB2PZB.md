@@ -9,7 +9,7 @@ subject:
   - "[Software RDF Trilith](20260830114137.md)"
 wasAttributedTo:
   - "[Symbolith](20260816134144.md)"
-reviewLevel: unread
+vetting: unread
 ---
 ## Indexes
 
