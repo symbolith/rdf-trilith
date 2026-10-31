@@ -1,0 +1,177 @@
+---
+aliases:
+  - Project Rebase RDF Trilith on rdf-types
+type:
+  - "[Type Project](20251204171142.md)"
+  - "[Type Factor](20260923150308.md)"
+isPartOf:
+  - "[Project Implement RDF Trilith](01M3N4VPA5QGM320ZH8QV72KCM.md)"
+hasLead: "[Symbolith](20260816134144.md)"
+hasIntent: "RDF Trilith is the lexical layer over rdf-types in place of rdf-syntax: its terms interpret into rdf-types resources, and its graphs and datasets implement the rdf-types traits."
+hasInput:
+  - "[Software rdf-types](01M61A10QZA7DMKQGPFMH9QGKT.md)"
+  - "[Software rdf-syntax](01M61A10SJEHPWGSSTEG7DKD1Y.md)"
+hasOutput:
+  - "[Software RDF Trilith](20260830114137.md)"
+vetting: unread
+---
+
+## Working On
+
+<!-- dataview-serializer-js:
+const pages = dv.pages();
+const refers = (value, id) => String(value).includes(id + ".md");
+const markers = {intended: " ", ready: ">", recovering: "!", claimed: "/", succeeded: "x", failed: "-"};
+const statesOf = page => {
+  const values = [page.hasActState ?? page.hasFactorState ?? []].flat().map(state => String(state).replace(/^(act|factor)/, "").toLowerCase());
+  return values.length ? values : ["intended"];
+};
+const stateOf = page => ["failed", "succeeded", "canceled", "claimed", "recovering", "ready", "intended"]
+  .find(state => statesOf(page).includes(state));
+const generated = ["Working On", "Next Acts", "Acts"];
+const line = act => "- [" + (markers[stateOf(act)] ?? " ") + "] [" + act.file.aliases[0] + "](" + act.file.name + ".md)";
+const todos = act => act.file.tasks.array()
+  .filter(task => !generated.includes(task.section.subpath));
+const byAlias = (left, right) => left.file.aliases[0].localeCompare(right.file.aliases[0]);
+const followed = act => pages
+  .where(page => refers(act.follows, page.file.name)).array();
+const membersOf = name => pages
+  .where(page => refers(page.isPartOf, name)).array();
+const members = [];
+const queue = [dv.current().file.name];
+while (queue.length) {
+  for (const page of membersOf(queue.pop())) {
+    if (!members.some(known => known.file.name === page.file.name)) {
+      members.push(page);
+      queue.push(page.file.name);
+    }
+  }
+}
+const candidates = [...new Map(
+  [dv.current(), ...members].flatMap(act => followed(act)).concat(members)
+    .map(page => [page.file.name, page])
+).values()];
+const checkboxes = (act, depth) => todos(act)
+  .filter(task => !task.completed)
+  .map(task => "    ".repeat(depth) + "- [ ] " + task.text);
+dv.paragraph(candidates
+  .filter(act => ["claimed", "recovering"].includes(stateOf(act)) && !membersOf(act.file.name).length)
+  .sort(byAlias)
+  .flatMap(act => [
+    line(act),
+    ...checkboxes(act, 1),
+  ])
+  .join("\n"));
+ -->
+
+## Next Acts
+
+<!-- dataview-serializer-js:
+const pages = dv.pages();
+const refers = (value, id) => String(value).includes(id + ".md");
+const markers = {intended: " ", ready: ">", recovering: "!", claimed: "/", succeeded: "x", failed: "-"};
+const statesOf = page => {
+  const values = [page.hasActState ?? page.hasFactorState ?? []].flat().map(state => String(state).replace(/^(act|factor)/, "").toLowerCase());
+  return values.length ? values : ["intended"];
+};
+const stateOf = page => ["failed", "succeeded", "canceled", "claimed", "recovering", "ready", "intended"]
+  .find(state => statesOf(page).includes(state));
+const generated = ["Working On", "Next Acts", "Acts"];
+const line = act => "- [" + (markers[stateOf(act)] ?? " ") + "] [" + act.file.aliases[0] + "](" + act.file.name + ".md)";
+const todos = act => act.file.tasks.array()
+  .filter(task => !generated.includes(task.section.subpath));
+const byAlias = (left, right) => left.file.aliases[0].localeCompare(right.file.aliases[0]);
+const followed = act => pages
+  .where(page => refers(act.follows, page.file.name)).array();
+const membersOf = name => pages
+  .where(page => refers(page.isPartOf, name)).array();
+const members = [];
+const queue = [dv.current().file.name];
+while (queue.length) {
+  for (const page of membersOf(queue.pop())) {
+    if (!members.some(known => known.file.name === page.file.name)) {
+      members.push(page);
+      queue.push(page.file.name);
+    }
+  }
+}
+const candidates = [...new Map(
+  [dv.current(), ...members].flatMap(act => followed(act)).concat(members)
+    .map(page => [page.file.name, page])
+).values()];
+const isCandidate = act => candidates.some(page => page.file.name === act.file.name);
+const preceded = act => followed(act)
+  .some(page => isCandidate(page) && stateOf(page) !== "succeeded");
+const checkboxes = (act, depth) => todos(act)
+  .filter(task => !task.completed)
+  .map(task => "    ".repeat(depth) + "- [ ] " + task.text);
+dv.paragraph([
+  ...checkboxes(dv.current(), 0),
+  ...candidates
+    .filter(act => ["intended", "ready"].includes(stateOf(act)) && !membersOf(act.file.name).length && !preceded(act))
+    .sort(byAlias)
+    .flatMap(act => [
+      line(act),
+      ...checkboxes(act, 1),
+    ]),
+].join("\n"));
+ -->
+<!-- dataview-serializer-js-result -->
+<!-- dataview-serializer-js-result-end -->
+
+## Acts
+
+<!-- dataview-serializer-js:
+const pages = dv.pages();
+const refers = (value, id) => String(value).includes(id + ".md");
+const markers = {intended: " ", ready: ">", recovering: "!", claimed: "/", succeeded: "x", failed: "-"};
+const statesOf = page => {
+  const values = [page.hasActState ?? page.hasFactorState ?? []].flat().map(state => String(state).replace(/^(act|factor)/, "").toLowerCase());
+  return values.length ? values : ["intended"];
+};
+const stateOf = page => ["failed", "succeeded", "canceled", "claimed", "recovering", "ready", "intended"]
+  .find(state => statesOf(page).includes(state));
+const generated = ["Working On", "Next Acts", "Acts"];
+const line = act => "- [" + (markers[stateOf(act)] ?? " ") + "] [" + act.file.aliases[0] + "](" + act.file.name + ".md)";
+const todos = act => act.file.tasks.array()
+  .filter(task => !generated.includes(task.section.subpath));
+const byAlias = (left, right) => left.file.aliases[0].localeCompare(right.file.aliases[0]);
+const followed = act => pages
+  .where(page => refers(act.follows, page.file.name)).array();
+const membersOf = name => pages
+  .where(page => refers(page.isPartOf, name)).array();
+const members = [];
+const queue = [dv.current().file.name];
+while (queue.length) {
+  for (const page of membersOf(queue.pop())) {
+    if (!members.some(known => known.file.name === page.file.name)) {
+      members.push(page);
+      queue.push(page.file.name);
+    }
+  }
+}
+const isMember = act => members.some(page => page.file.name === act.file.name);
+const heads = act => {
+  const parts = membersOf(act.file.name);
+  return parts.filter(page => !parts.some(part => refers(part.follows, page.file.name)));
+};
+const children = act => [...new Map(
+  [...followed(act), ...heads(act)].map(page => [page.file.name, page])
+).values()];
+const checkboxes = (act, depth) => todos(act)
+  .map(task => "    ".repeat(depth) + "- " + (task.completed ? "[x] " : "[ ] ") + task.text);
+const tree = (acts, depth, path) => acts
+  .filter(page => !path.includes(page.file.name))
+  .sort(byAlias)
+  .flatMap(page => [
+    "    ".repeat(depth) + line(page),
+    ...checkboxes(page, depth + 1),
+    ...(isMember(page) ? tree(children(page), depth + 1, [...path, page.file.name]) : []),
+  ]);
+dv.paragraph([
+  ...checkboxes(dv.current(), 0),
+  ...tree(children(dv.current()), 0, [dv.current().file.name]),
+].join("\n"));
+ -->
+<!-- dataview-serializer-js-result -->
+<!-- dataview-serializer-js-result-end -->
