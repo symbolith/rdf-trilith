@@ -21,12 +21,12 @@ vetting: unread
 <!-- dataview-serializer-js:
 const pages = dv.pages();
 const refers = (value, id) => String(value).includes(id + ".md");
-const markers = {intended: " ", ready: ">", recovering: "!", claimed: "/", succeeded: "x", failed: "-"};
+const markers = {intended: " ", ready: ">", recovering: "!", claimed: "/", running: "/", succeeded: "x", failed: "-", suspended: "<", canceled: "-"};
 const statesOf = page => {
-  const values = [page.hasActState ?? page.hasFactorState ?? []].flat().map(state => String(state).replace(/^(act|factor)/, "").toLowerCase());
+  const values = [page.hasState ?? []].flat().map(state => String(state).toLowerCase());
   return values.length ? values : ["intended"];
 };
-const stateOf = page => ["failed", "succeeded", "canceled", "claimed", "recovering", "ready", "intended"]
+const stateOf = page => ["failed", "succeeded", "canceled", "suspended", "claimed", "stacked", "running", "recovering", "ready", "intended"]
   .find(state => statesOf(page).includes(state));
 const generated = ["Working On", "Next Acts", "Acts"];
 const line = act => "- [" + (markers[stateOf(act)] ?? " ") + "] [" + act.file.aliases[0] + "](" + act.file.name + ".md)";
@@ -55,7 +55,7 @@ const checkboxes = (act, depth) => todos(act)
   .filter(task => !task.completed)
   .map(task => "    ".repeat(depth) + "- [ ] " + task.text);
 dv.paragraph(candidates
-  .filter(act => ["claimed", "recovering"].includes(stateOf(act)) && !membersOf(act.file.name).length)
+  .filter(act => ["claimed", "running", "recovering"].includes(stateOf(act)) && !membersOf(act.file.name).length)
   .sort(byAlias)
   .flatMap(act => [
     line(act),
@@ -69,12 +69,12 @@ dv.paragraph(candidates
 <!-- dataview-serializer-js:
 const pages = dv.pages();
 const refers = (value, id) => String(value).includes(id + ".md");
-const markers = {intended: " ", ready: ">", recovering: "!", claimed: "/", succeeded: "x", failed: "-"};
+const markers = {intended: " ", ready: ">", recovering: "!", claimed: "/", running: "/", succeeded: "x", failed: "-", suspended: "<", canceled: "-"};
 const statesOf = page => {
-  const values = [page.hasActState ?? page.hasFactorState ?? []].flat().map(state => String(state).replace(/^(act|factor)/, "").toLowerCase());
+  const values = [page.hasState ?? []].flat().map(state => String(state).toLowerCase());
   return values.length ? values : ["intended"];
 };
-const stateOf = page => ["failed", "succeeded", "canceled", "claimed", "recovering", "ready", "intended"]
+const stateOf = page => ["failed", "succeeded", "canceled", "suspended", "claimed", "stacked", "running", "recovering", "ready", "intended"]
   .find(state => statesOf(page).includes(state));
 const generated = ["Working On", "Next Acts", "Acts"];
 const line = act => "- [" + (markers[stateOf(act)] ?? " ") + "] [" + act.file.aliases[0] + "](" + act.file.name + ".md)";
@@ -101,7 +101,7 @@ const candidates = [...new Map(
 ).values()];
 const isCandidate = act => candidates.some(page => page.file.name === act.file.name);
 const preceded = act => followed(act)
-  .some(page => isCandidate(page) && stateOf(page) !== "succeeded");
+  .some(page => isCandidate(page) && !["succeeded", "failed", "suspended", "canceled"].includes(stateOf(page)));
 const checkboxes = (act, depth) => todos(act)
   .filter(task => !task.completed)
   .map(task => "    ".repeat(depth) + "- [ ] " + task.text);
@@ -124,12 +124,12 @@ dv.paragraph([
 <!-- dataview-serializer-js:
 const pages = dv.pages();
 const refers = (value, id) => String(value).includes(id + ".md");
-const markers = {intended: " ", ready: ">", recovering: "!", claimed: "/", succeeded: "x", failed: "-"};
+const markers = {intended: " ", ready: ">", recovering: "!", claimed: "/", running: "/", succeeded: "x", failed: "-", suspended: "<", canceled: "-"};
 const statesOf = page => {
-  const values = [page.hasActState ?? page.hasFactorState ?? []].flat().map(state => String(state).replace(/^(act|factor)/, "").toLowerCase());
+  const values = [page.hasState ?? []].flat().map(state => String(state).toLowerCase());
   return values.length ? values : ["intended"];
 };
-const stateOf = page => ["failed", "succeeded", "canceled", "claimed", "recovering", "ready", "intended"]
+const stateOf = page => ["failed", "succeeded", "canceled", "suspended", "claimed", "stacked", "running", "recovering", "ready", "intended"]
   .find(state => statesOf(page).includes(state));
 const generated = ["Working On", "Next Acts", "Acts"];
 const line = act => "- [" + (markers[stateOf(act)] ?? " ") + "] [" + act.file.aliases[0] + "](" + act.file.name + ".md)";

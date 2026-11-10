@@ -3,7 +3,7 @@ aliases:
   - Add an interpretation layer to RDF Trilith
 type:
   - "[Type Act](20260608023505.md)"
-hasActState: actIntended
+hasState: intended
 isPartOf:
   - "[Project Rebase RDF Trilith on rdf-types](01M61A10Z27NFHK3KJ5VBEAVC3.md)"
 hasLead: "[Gordian Dziwis](3f1909e2-5284-4d40-a1ed-8bf222238d03.md)"
@@ -36,7 +36,7 @@ const follows = (later, earlier) => refers(later.follows, earlier.file.name)
 dv.paragraph(pages
   .where(page => follows(current, page))
   .sort(page => page.file.aliases[0])
-  .map(page => "- [" + page.file.aliases[0] + "](" + page.file.name + ".md)" + (page.hasActState ? ": " + String(page.hasActState).replace(/^act/, "").toLowerCase() : ""))
+  .map(page => "- [" + page.file.aliases[0] + "](" + page.file.name + ".md)" + (page.hasState ? ": " + String(page.hasState).toLowerCase() : ""))
   .join("\n"));
  -->
 
@@ -57,7 +57,7 @@ const follows = (later, earlier) => refers(later.follows, earlier.file.name)
 dv.paragraph(pages
   .where(page => follows(page, current))
   .sort(page => page.file.aliases[0])
-  .map(page => "- [" + page.file.aliases[0] + "](" + page.file.name + ".md)" + (page.hasActState ? ": " + String(page.hasActState).replace(/^act/, "").toLowerCase() : ""))
+  .map(page => "- [" + page.file.aliases[0] + "](" + page.file.name + ".md)" + (page.hasState ? ": " + String(page.hasState).toLowerCase() : ""))
   .join("\n"));
  -->
 <!-- dataview-serializer-js-result -->
